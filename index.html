@@ -14,7 +14,6 @@
 	margin:0;
 	padding:0;
 }
-
 body {
 	font-size:16px;
 	font:400 16px/1.62 Georgia,"Xin Gothic","Hiragino Sans GB","Droid Sans Fallback","Microsoft YaHei",sans-serif;font-family: 'PT serif',微軟正黑體,微软雅黑,华文细黑,Microsoft Yahei,Hiragino Sans GB,sans-serif;
@@ -23,7 +22,6 @@ body {
 	text-shadow: 0px 0px 1px rgba(24, 22, 22, 0.35);
 	background-color: #000;
 }
-
 .willerce {
    text-align: center;
    max-width: 350px;
@@ -33,29 +31,23 @@ body {
    margin: 10% auto auto;
    padding: 10px 10px;
 }
-
 h1 {
 	font-size:36px;
 }
-
 .avatar {
 	margin-bottom:35px;
 	border-radius:64px;
 	box-shadow:0 1px 2px rgba(0,0,0,0.5);
 }
-
 .nav a {
 	padding:0 6px;
 }
-
 40% {
 	opacity:0;
 }
-
 100% {
 	opacity:1;
 }
-
 #head
 {
     width: 128px;
@@ -111,20 +103,18 @@ a {
     margin: 0 auto;
     line-height: 40px;
     text-align: center;
-	text-decoration: none;
+    text-decoration: none;
 }
-
-a:link, 
-a:visited { 
-color:#D0CCCC; 
-text-decoration:none; 
-} 
-a:hover, 
-a:active { 
-color:#fff; 
-text-decoration:none; 
+a:link,
+a:visited {
+color:#D0CCCC;
+text-decoration:none;
 }
- 		
+a:hover,
+a:active {
+color:#fff;
+text-decoration:none;
+}	
 .copyright {
     bottom: 0;
     cursor: default;
@@ -135,24 +125,24 @@ text-decoration:none;
     text-align: center;
     width: 100%;
 }
-</style> 
- </head> 
- <body> 
-  <div class="willerce"> 
-   <div> 
-    <img src="https://i.ssss.fun/HI.png" id="logo" title="@楊遠徵" /> 
-    <h1>楊遠徵</h1> 
-    <a>平平无奇楊遠徵</a> 
-   </div> 
-   <div class="menu"> 
-    <a class="anniu" href="https://i.ssss.fun/Profile">简介</a> 
-    <a class="anniu" href="https://blog.ssss.fun">博客</a> 
-    <a class="anniu" href="https://msg.ssss.fun">留言</a> 
-    <a class="anniu" href="https://pay.ssss.fun">赞助</a> 
-   </div> 
-  </div> 
-  <span class="copyright">&copy; <a href="https://s.ssss.fun/Link/Weibo"> 中國遠徵 </a></span>   
-  <canvas height="100%" width="100%" style="position: fixed; top: 0px; left: 0px; z-index: -1; opacity: 1;" id="canvas"></canvas> 
+</style>
+ </head>
+ <body>
+  <div class="willerce">
+   <div>
+    <img src="https://i.ssss.fun/HI.png" id="logo" title="@楊遠徵" />
+    <h1>楊遠徵</h1>
+    <a>平平无奇楊遠徵</a>
+   </div>
+   <div class="menu">
+    <a class="anniu" href="https://blog.ssss.fun">博客</a>
+    <a class="anniu" href="https://msg.ssss.fun">留言</a>
+    <a class="anniu" href="https://pay.ssss.fun">赞助</a>
+    <a class="anniu" href="https://i.ssss.fun/Profile">简介</a>
+   </div>
+  </div>
+  <span class="copyright">&copy; <a href="https://s.ssss.fun/Link/Weibo"> 中國遠徵 </a></span>
+  <canvas height="100%" width="100%" style="position: fixed; top: 0px; left: 0px; z-index: -1; opacity: 1;" id="canvas"></canvas>
   <script>
 var canvas,
 	ctx,
@@ -161,7 +151,6 @@ var canvas,
 	size,
 	lines,
 	tick;
-
 function line() {
 	this.path = [];
 	this.speed = rand(10, 20);
@@ -179,19 +168,15 @@ function line() {
 	this.updateAngle();
 	this.updateDist();
 }
-
 line.prototype.step = function(i) {
 	this.x += Math.cos(this.angle) * this.speed;
 	this.y += Math.sin(this.angle) * this.speed;
-
 	this.updateDist();
-
 	if (this.dist < this.speed) {
 		this.x = this.target.x;
 		this.y = this.target.y;
 		this.changeTarget();
 	}
-
 	this.path.push({
 		x: this.x,
 		y: this.y
@@ -199,27 +184,22 @@ line.prototype.step = function(i) {
 	if (this.path.length > this.count) {
 		this.path.shift();
 	}
-
 	this.life -= 0.001;
-
 	if (this.life <= 0) {
 		this.path = null;
 		lines.splice(i, 1);
 	}
 };
-
 line.prototype.updateDist = function() {
 	var dx = this.target.x - this.x,
 		dy = this.target.y - this.y;
 	this.dist = Math.sqrt(dx * dx + dy * dy);
 }
-
 line.prototype.updateAngle = function() {
 	var dx = this.target.x - this.x,
 		dy = this.target.y - this.y;
 	this.angle = Math.atan2(dy, dx);
 }
-
 line.prototype.changeTarget = function() {
 	var randStart = randInt(0, 3);
 	switch (randStart) {
@@ -237,7 +217,6 @@ line.prototype.changeTarget = function() {
 	}
 	this.updateAngle();
 };
-
 line.prototype.draw = function(i) {
 	ctx.beginPath();
 	var rando = rand(0, 10);
@@ -248,15 +227,12 @@ line.prototype.draw = function(i) {
 	ctx.lineWidth = rand(0.1, 2);
 	ctx.stroke();
 };
-
 function rand(min, max) {
 	return Math.random() * (max - min) + min;
 }
-
 function randInt(min, max) {
 	return Math.floor(min + Math.random() * (max - min + 1));
 };
-
 function init() {
 	canvas = document.getElementById('canvas');
 	ctx = canvas.getContext('2d');
@@ -265,37 +241,31 @@ function init() {
 	reset();
 	loop();
 }
-
 function reset() {
 	width = Math.ceil(window.innerWidth / 2) * 2;
 	height = Math.ceil(window.innerHeight / 2) * 2;
 	tick = 0;
-
 	lines.length = 0;
 	canvas.width = width;
 	canvas.height = height;
 }
-
 function create() {
 	if (tick % 10 === 0) {
 		lines.push(new line());
 	}
 }
-
 function step() {
 	var i = lines.length;
 	while (i--) {
 		lines[i].step(i);
 	}
 }
-
 function clear() {
 	ctx.globalCompositeOperation = 'destination-out';
 	ctx.fillStyle = 'hsla(0, 0%, 0%, 0.1';
 	ctx.fillRect(0, 0, width, height);
 	ctx.globalCompositeOperation = 'lighter';
 }
-
 function draw() {
 	ctx.save();
 	ctx.translate(width / 2, height / 2);
@@ -309,7 +279,6 @@ function draw() {
 	}
 	ctx.restore();
 }
-
 function loop() {
 	requestAnimationFrame(loop);
 	create();
@@ -318,13 +287,10 @@ function loop() {
 	draw();
 	tick++;
 }
-
 function onresize() {
 	reset();
 }
-
 window.addEventListener('resize', onresize);
-
 init();
 </script> 
   <script type="text/javascript" src="https://cdn.ssss.fun/z/3/i_ssss_fun.js"></script>  
