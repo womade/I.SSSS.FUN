@@ -18,6 +18,8 @@ body {
   padding: 20px;
 }
 
+.card::-webkit-scrollbar {display: none;}
+
 .card {
   max-width: 340px;
   margin: auto;
