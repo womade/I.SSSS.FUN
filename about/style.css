@@ -6,7 +6,7 @@ body {
   overflow:hidden;
   color: #2b2c48;
   font-family: "Microsoft Yahei", sans-serif;
-  background-image: url(/Profile/img/background.jpg);
+  background-image: url(./background.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
